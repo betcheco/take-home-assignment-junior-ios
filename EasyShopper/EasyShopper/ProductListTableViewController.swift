@@ -11,12 +11,25 @@ import UIKit
 class ProductListTableViewController: UITableViewController {
 
     var _productList: [Product] = []
+    let _networkService = NetworkService()
  
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "productListCell")
         
+        
+        
+        
+        _networkService.doRequest(){ productList in
+            print("ProductList")
+            print(productList)
+            
+            DispatchQueue.main.async {
+               // update UI
+                self.tableView.reloadData()
+            }
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

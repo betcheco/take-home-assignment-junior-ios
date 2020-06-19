@@ -34,7 +34,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        _shoppingBasket.addProduct(pProduct: mockProduct)
+        //Testing UI
+        //_shoppingBasket.addProduct(pProduct: mockProduct)
         labelTotalPrice.text = String(format:"%.1f", self._shoppingBasket.totalPrice)
         
     
