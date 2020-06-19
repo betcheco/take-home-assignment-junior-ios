@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         self._shoppingBasket.clearBasket()
         labelTotalPrice.text = String(format:"%.1f", self._shoppingBasket.totalPrice)
+        self.shoppingListTableView.reloadData()
     }
     @IBOutlet weak var labelTotalPrice: UILabel!
     @IBOutlet weak var shoppingListTableView: UITableView!
@@ -49,6 +50,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                
                
                 cell.labelName.text = self._shoppingBasket.products[indexPath.row].name
+                
+                //TODO: put this in a separete function as a helper. or in the Shopping class.
+                let imageUrlString = self._shoppingBasket.products[indexPath.row].imageURL
+                let imageUrl:URL = URL(string: imageUrlString)!
+                let imageData = try? Data(contentsOf: imageUrl)
+                cell.imageView?.image = UIImage(data: imageData!)
+                          
+                       
+                     
                   return cell
               }
 }
